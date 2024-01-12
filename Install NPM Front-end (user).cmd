@@ -1,2 +1,3 @@
-cd Front-end (user)
+#!/bin/bash
+cd "Front-end (user)" || exit
 npm i

@@ -1,2 +1,3 @@
-cd OB-Tink
+#!/bin/bash
+cd "OB-Tink" || exit
 node server.mjs

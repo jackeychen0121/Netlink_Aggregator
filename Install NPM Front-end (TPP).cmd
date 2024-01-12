@@ -1,2 +1,3 @@
-cd Front-end (TPP)
+#!/bin/bash
+cd "Front-end (TPP)" || exit
 npm i
