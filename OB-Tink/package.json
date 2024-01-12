@@ -1,0 +1,16 @@
+{
+  "name": "tink-connect-example",
+  "version": "1.0.0",
+  "description": "An example app showing how to use the Tink API in a third-party app.",
+  "repository": "github:tink-ab/tink-connect-example",
+  "main": "server.js",
+  "scripts": {
+    "start": " node server.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "18"
+  }
+}
+
