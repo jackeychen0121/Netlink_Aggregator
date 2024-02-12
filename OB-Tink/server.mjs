@@ -19,7 +19,7 @@ if (!CLIENT_SECRET) {
 }
 
 const hostname = 'localhost';
-const port = 3003;
+const port = 3000;
 
 const apiUrl = 'https://api.tink.com';
 

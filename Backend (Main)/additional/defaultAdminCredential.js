@@ -1,5 +1,5 @@
 module.exports={
-    "name":"234",
-    "password":"234",
-    "email":"234"
+    "name":"123",
+    "password":"123",
+    "email":"123"
 }

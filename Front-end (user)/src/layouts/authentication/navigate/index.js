@@ -53,6 +53,28 @@ function Basic() {
               <MDBox pt={4} pb={3} px={3}>
                 <MDBox component="form" role="form">
                   <MDTypography variant="h1" fontWeight="medium" textAlign="center" mt={1}>
+                    Model Bank
+                  </MDTypography>
+                  <MDBox mt={4} mb={1}>
+                    <Link
+                      href={"http://localhost:3004/auth/login?token=" + token}
+                    target="_blank"
+                    >
+                      <MDButton variant="gradient" color="info" fullWidth>
+                        access
+                      </MDButton>
+                    </Link>
+                  </MDBox>
+                </MDBox>
+              </MDBox>
+            </Card>
+          </Grid>
+
+          <Grid xs={5} sm={4} md={3} lg={2} ml={1.5}>
+            <Card>
+              <MDBox pt={4} pb={3} px={3}>
+                <MDBox component="form" role="form">
+                  <MDTypography variant="h1" fontWeight="medium" textAlign="center" mt={1}>
                     Tink
                   </MDTypography>
                   <MDBox mt={4} mb={1}>
