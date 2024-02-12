@@ -9,6 +9,10 @@ port for OBAggregator
 8000 : Backend - admin || TPP || user
 8001 : Backend-adorsys
 
+Admin
+123
+123
+
 Adorsys credential for user
 123456
 123456
@@ -20,4 +24,9 @@ Adorsys credential for TPP
 Tink cerdential
 u37663912
 wpy299
+
+Model Bank
+234234
+0p;/)P:?
+
 
