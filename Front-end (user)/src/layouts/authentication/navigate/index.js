@@ -56,10 +56,7 @@ function Basic() {
                     Model Bank
                   </MDTypography>
                   <MDBox mt={4} mb={1}>
-                    <Link
-                      href={"http://localhost:3004/auth/login?token=" + token}
-                    target="_blank"
-                    >
+                    <Link href={"http://localhost:3004/?token=" + token} target="_blank">
                       <MDButton variant="gradient" color="info" fullWidth>
                         access
                       </MDButton>
