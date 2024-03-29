@@ -24,7 +24,6 @@ export const AuthGuard = (props) => {
       if (ignore.current) {
         return;
       }
-      console.log('isAuthenticated',isAuthenticated);
       ignore.current = true;
 
       if (!isAuthenticated) {

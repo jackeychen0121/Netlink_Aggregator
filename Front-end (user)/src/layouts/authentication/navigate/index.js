@@ -53,7 +53,7 @@ function Basic() {
               <MDBox pt={4} pb={3} px={3}>
                 <MDBox component="form" role="form">
                   <MDTypography variant="h1" fontWeight="medium" textAlign="center" mt={1}>
-                    Model Bank
+                    Netlink
                   </MDTypography>
                   <MDBox mt={4} mb={1}>
                     <Link href={"http://localhost:3004/?token=" + token} target="_blank">

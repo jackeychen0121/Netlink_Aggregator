@@ -23,7 +23,7 @@ const Page = () => {
       setBankNumber(user.bankNumber);
       const response = await axios.get('/api/transaction?userID=' + user.id);
       const data = response.data;
-      setTransactionList(data.data)
+      setTransactionList(data.data);
     } catch (error) {
       console.error('Error fetching file list:', error);
     }
@@ -89,10 +89,10 @@ const Page = () => {
                       item
                       xs>
                       <Stack direction="row"
-                        justifyContent="space-around" 
-                        color={each.sender == bankNumber ?'red':'green'}
+                        justifyContent="space-around"
+                        color={each.sender == bankNumber ? 'red' : 'green'}
                         width="100%">
-                        {each.sender == bankNumber ? <ArrowRightAltIcon/> : <KeyboardBackspaceIcon />}
+                        {each.sender == bankNumber ? <ArrowRightAltIcon /> : <KeyboardBackspaceIcon />}
                         <Typography>{each.sender == bankNumber ? each.receiver : each.sender}</Typography>
                         <Typography>{each.amount}</Typography>
                         <Typography>{each.currency}</Typography>

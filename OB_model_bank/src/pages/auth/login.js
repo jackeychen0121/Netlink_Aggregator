@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
-import { useRouter, useSearchParams  } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -15,14 +15,14 @@ import { useAuth } from 'src/hooks/use-auth';
 import { Layout as AuthLayout } from 'src/layouts/auth/layout';
 import Alert from "./../../components/alert";
 import React, { useEffect, useState } from 'react';
-import {verify_user} from "./../../utils/verify_user";
+import { verify_user } from "./../../utils/verify_user";
 
 const Page = () => {
   const [alert, setAlert] = useState({ message: '', successful: true, open: false });
   const router = useRouter();
   const auth = useAuth();
   const query = useSearchParams();
-  const token=query.get("token");
+  const token = query.get("token");
   localStorage.setItem("OBAgg4user", token);
 
   const formik = useFormik({
@@ -42,30 +42,30 @@ const Page = () => {
         .required('Password is required')
     }),
     onSubmit: async (values, helpers) => {
-      const verify_code = await verify_user();
-      if (verify_code!=="success") {
-        setAlert({ message: "Wrong Verification code.", successful: false, open: true });
-      }else{
-        await auth.signIn(values.name, values.password).then(
-          () => {
-            setAlert({ message: "Login Successfully", successful: true, open: true });
-            router.push('/');
-          },
-          error => {
-            helpers.setStatus({ success: false });
-            helpers.setSubmitting(false);
-            const resMessage =
-              (error.response &&
-                error.response.data &&
-                error.response.data.message) ||
-              error.message ||
-              error.toString();
-            setAlert({ message: resMessage, successful: false, open: true });
-  
-          }
-        );
-      }
-      
+      // const verify_code = await verify_user();
+      // if (verify_code!=="success") {
+      //   setAlert({ message: "Wrong Verification code.", successful: false, open: true });
+      // }else{
+      await auth.signIn(values.name, values.password).then(
+        () => {
+          setAlert({ message: "Login Successfully", successful: true, open: true });
+          router.push('/');
+        },
+        error => {
+          helpers.setStatus({ success: false });
+          helpers.setSubmitting(false);
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          setAlert({ message: resMessage, successful: false, open: true });
+
+        }
+      );
+      // }
+
     }
   });
 
@@ -76,7 +76,7 @@ const Page = () => {
           Model Bank
         </title>
       </Head>
-      <Alert message={alert.message} successful={alert.successful} open={alert.open} handleClose={()=>{ setAlert({ ...alert, open: false });}} />
+      <Alert message={alert.message} successful={alert.successful} open={alert.open} handleClose={() => { setAlert({ ...alert, open: false }); }} />
       <Box
         sx={{
           backgroundColor: 'background.paper',

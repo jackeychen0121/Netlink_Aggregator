@@ -3,8 +3,11 @@ import User from "../../../server/model/user";
 import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
 import config from "./../../../../global.config";
+import cors from "../../../server/utils/cors";
+
 export default async function handler(req, res) {
     await dbConnect();
+    await cors(req, res);
 
     if (req.method === 'POST') {
         try {
@@ -34,9 +37,9 @@ export default async function handler(req, res) {
                 id: user._id,
                 username: user.username,
                 token: token,
-                bankNumber:user.bankNumber,
-                balance:user.balance,
-                currency:user.currency
+                bankNumber: user.bankNumber,
+                balance: user.balance,
+                currency: user.currency
             });
         } catch (err) {
             res.status(500).send({ message: err.message });
