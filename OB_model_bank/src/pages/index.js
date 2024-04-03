@@ -22,11 +22,14 @@ const Page = () => {
       title: "Bank Number",
       value: 'bankNumber'
     }, {
-      title: "currency",
-      value: 'currency'
+      title: "USD balance",
+      value: 'balance_usd'
     }, {
-      title: "balance",
-      value: 'balance'
+      title: "Euro balance",
+      value: 'balance_eur'
+    }, {
+      title: "GBP balance",
+      value: 'balance_gbp'
     }
   ]
   const router = useRouter();
@@ -67,7 +70,7 @@ const Page = () => {
   }
 
   const submitTransfer = async () => {
-    if (transfer.amount < 0 || transfer.amount > Number(userData.balance)) {
+    if (transfer.amount < 0 || transfer.amount > Number(userData[transfer.currency])) {
       setAlert({ message: 'Invalid Amount', successful: false, open: true });
     } else if (transfer.receiver === '') {
       setAlert({ message: "Input receiver's bank number", successful: false, open: true });
@@ -75,10 +78,10 @@ const Page = () => {
       const userStr = localStorage.getItem("user");
       const user = JSON.parse(userStr);
       const result = await axios.post('/api/transfer?userID=' + user.id, { ...transfer, sender: userData.bankNumber });
-      if (result.data.success){
+      if (result.data.success) {
         setAlert({ message: "Transfered Successfully", successful: true, open: true });
         getUserData();
-      }else{
+      } else {
         setAlert({ message: result.data.message, successful: true, open: true });
       }
     }
@@ -86,9 +89,9 @@ const Page = () => {
 
   useEffect(() => {
     const userStr = localStorage.getItem("user");
-    if(!userStr) router.push('/auth/login');
+    if (!userStr) router.push('/auth/login');
     getUserData();
-    
+
   }, []);
 
   return (
@@ -102,9 +105,9 @@ const Page = () => {
       <Box
         component="main"
       >
-        <TopNav/>
+        <TopNav />
         <Container maxWidth="xl">
-        
+
           <Box
             display="flex"
             flexDirection="column"
@@ -116,7 +119,7 @@ const Page = () => {
               }
             }}
           >
-            
+
             <Grid
               container
               spacing={3}
@@ -231,10 +234,9 @@ const Page = () => {
                     value={transfer.currency}
                     onChange={e => { setTransfer({ ...transfer, currency: e.target.value }); }}
                   >
-                    <MenuItem value={'USD'}>USD</MenuItem>
-                    <MenuItem value={'Euro'}>Euro</MenuItem>
-                    <MenuItem value={'GBP'}>GBP</MenuItem>
-                    <MenuItem value={'CHF'}>CHF</MenuItem>
+                    <MenuItem value={'balance_usd'}>USD</MenuItem>
+                    <MenuItem value={'balance_eur'}>Euro</MenuItem>
+                    <MenuItem value={'balance_gbp'}>GBP</MenuItem>
                   </Select>
                   <Button sx={{ width: "10%" }}
                     onClick={() => submitTransfer()}>

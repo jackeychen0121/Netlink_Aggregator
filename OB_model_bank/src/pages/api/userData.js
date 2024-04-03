@@ -10,9 +10,10 @@ const handler = async (req, res) => {
         const user = await User.findById(req.query.userID);
 
         return res.status(200).json({
-            balance: user.balance,
             bankNumber: user.bankNumber,
-            currency: user.currency,
+            balance_usd: user.balance_usd,
+            balance_eur: user.balance_eur,
+            balance_gbp: user.balance_gbp,
             username: user.username
         });
     } else if (req.method === 'POST') {

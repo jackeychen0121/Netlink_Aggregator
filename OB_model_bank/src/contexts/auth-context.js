@@ -76,7 +76,7 @@ export const AuthProvider = (props) => {
     let isAuthenticated = false;
 
     try {
-      isAuthenticated = localStorage.getItem("user")?true:false;
+      isAuthenticated = localStorage.getItem("user") ? true : false;
     } catch (err) {
       console.error(err);
     }
@@ -119,9 +119,10 @@ export const AuthProvider = (props) => {
           id: response.data.id,
           username: response.data.username,
           token: response.data.token,
-          bankNumber:response.data.bankNumber,
-          balance:response.data.balance,
-          currency:response.data.currency
+          bankNumber: response.data.bankNumber,
+          balance_eur: response.data.balance_eur,
+          balance_usd: response.data.balance_usd,
+          balance_gbp: response.data.balance_gbp
         };
 
         dispatch({
@@ -133,7 +134,7 @@ export const AuthProvider = (props) => {
   };
 
   const signUp = async (bankNumber, name, password) => {
-    return axios.post("/auth/signup", {
+    return axios.post("/api/auth/signup", {
       "username": name,
       "bankNumber": bankNumber,
       "password": password

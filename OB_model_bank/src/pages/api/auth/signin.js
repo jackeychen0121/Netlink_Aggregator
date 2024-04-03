@@ -38,8 +38,9 @@ export default async function handler(req, res) {
                 username: user.username,
                 token: token,
                 bankNumber: user.bankNumber,
-                balance: user.balance,
-                currency: user.currency
+                balance_usd: user.balance_usd,
+                balance_eur: user.balance_eur,
+                balance_gbp: user.balance_gbp,
             });
         } catch (err) {
             res.status(500).send({ message: err.message });

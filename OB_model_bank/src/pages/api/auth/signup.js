@@ -9,8 +9,9 @@ export default async function handler(req, res) {
         const user = new User({
             username: req.body.username,
             bankNumber: req.body.bankNumber,
-            balance:0,
-            currency: 'USD',
+            balance_usd: 0,
+            balance_eur: 0,
+            balance_gbp: 0,
             password: bcrypt.hashSync(req.body.password, 8),
         });
 

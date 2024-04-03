@@ -10,6 +10,12 @@ import { useRouter } from 'next/navigation';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
+const currency_convert = {
+  balance_usd: 'USD',
+  balance_eur: 'Euro',
+  balance_gbp: 'GBP'
+}
+
 const Page = () => {
   const router = useRouter();
   const [alert, setAlert] = useState({ message: '', successful: true, open: false });
@@ -79,26 +85,27 @@ const Page = () => {
                     </SvgIcon>
                   </Button>
                 </Typography>
+                <Stack
+                  direction="row"
+                  justifyContent="space-around"
+                  width="100%">
+                  <Grid md={2}><Typography fontSize={20} fontWeight={800} align='center'>In/Out</Typography></Grid>
+                  <Grid md={5}><Typography fontSize={20} fontWeight={800} align='center'>Bank Number</Typography></Grid>
+                  <Grid md={3}><Typography fontSize={20} fontWeight={800} align='center'>Amount</Typography></Grid>
+                  <Grid md={2}><Typography fontSize={20} fontWeight={800} align='center'>Currency</Typography></Grid>
+                </Stack>
                 {transactionList?.map((each, key) =>
-                  <Box
-                    sx={{ my: 2, mx: 2 }}
+                  <Stack
                     key={key}
-                  >
-                    <Grid container
-                      alignItems="center"
-                      item
-                      xs>
-                      <Stack direction="row"
-                        justifyContent="space-around"
-                        color={each.sender == bankNumber ? 'red' : 'green'}
-                        width="100%">
-                        {each.sender == bankNumber ? <ArrowRightAltIcon /> : <KeyboardBackspaceIcon />}
-                        <Typography>{each.sender == bankNumber ? each.receiver : each.sender}</Typography>
-                        <Typography>{each.amount}</Typography>
-                        <Typography>{each.currency}</Typography>
-                      </Stack>
-                    </Grid>
-                  </Box>
+                    direction="row"
+                    justifyContent="space-around"
+                    color={each.sender == bankNumber ? 'red' : 'green'}
+                    width="100%">
+                    <Grid md={2}>{each.sender == bankNumber ? <ArrowRightAltIcon /> : <KeyboardBackspaceIcon />}</Grid>
+                    <Grid md={5}><Typography>{each.sender == bankNumber ? each.receiver : each.sender}</Typography></Grid>
+                    <Grid md={3}><Typography>{each.amount}</Typography></Grid>
+                    <Grid md={2}><Typography>{currency_convert[each.currency]}</Typography></Grid>
+                  </Stack>
                 )}
 
               </Grid>

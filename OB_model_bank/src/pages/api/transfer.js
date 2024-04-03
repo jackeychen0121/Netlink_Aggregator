@@ -13,8 +13,8 @@ const handler = async (req, res) => {
       const adding = Number(req.body.amount);
       const subtracting = Number(req.body.amount) * (-1);
 
-      await User.findOneAndUpdate({ bankNumber: req.body.sender }, { $push: { transaction: transaction._id }, $inc: { balance: subtracting } });
-      await User.findOneAndUpdate({ bankNumber: req.body.receiver }, { $push: { transaction: transaction._id }, $inc: { balance: adding } });
+      await User.findOneAndUpdate({ bankNumber: req.body.sender }, { $push: { transaction: transaction._id }, $inc: { [req.body.currency]: subtracting } });
+      await User.findOneAndUpdate({ bankNumber: req.body.receiver }, { $push: { transaction: transaction._id }, $inc: { [req.body.currency]: adding } });
 
       return res.status(200).json({
         success: true

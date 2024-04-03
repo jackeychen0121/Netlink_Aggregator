@@ -4,22 +4,29 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique:true
+    unique: true
   },
   bankNumber: {
     type: String,
     required: true,
     unique: true
   },
-  balance: {
+  balance_usd: {
     type: Number,
-    required: true
+    required: true,
+    default: 0
+  },
+  balance_eur: {
+    type: Number,
+    required: true,
+    default: 0
+  },
+  balance_gbp: {
+    type: Number,
+    required: true,
+    default: 0
   },
   password: {
-    type: String,
-    required: true
-  },
-  currency: {
     type: String,
     required: true
   },
