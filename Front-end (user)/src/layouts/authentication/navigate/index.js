@@ -75,7 +75,7 @@ function Basic() {
                     Tink
                   </MDTypography>
                   <MDBox mt={4} mb={1}>
-                    <Link href={"http://localhost:3003?token=" + token} target="_blank">
+                    <Link href={"http://localhost:3000?token=" + token} target="_blank">
                       <MDButton variant="gradient" color="info" fullWidth>
                         access
                       </MDButton>
