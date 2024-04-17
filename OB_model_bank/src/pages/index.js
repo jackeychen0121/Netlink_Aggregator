@@ -107,7 +107,6 @@ const Page = () => {
       >
         <TopNav />
         <Container maxWidth="xl">
-
           <Box
             display="flex"
             flexDirection="column"
@@ -115,11 +114,11 @@ const Page = () => {
             height="100vh"
             sx={{
               '@media (max-width:900px)': {
-                height: "100%",
+                paddingTop: "64px",
+                height: '100%'
               }
             }}
           >
-
             <Grid
               container
               spacing={3}
